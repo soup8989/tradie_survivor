@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Tradie Survivors</title>
+  <meta name="description" content="A survivors-style browser game about Aussie tradies trying to make it to knock-off.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- In-game HUD -->
+  <div id="hud" class="hidden">
+    <div class="xp"><div id="xpFill"></div><span id="lvlText">LV 1</span></div>
+    <div class="hud-top">
+      <div id="timer" class="timer">00:00</div>
+      <div id="goal" class="goal">Knock-off at 10:00</div>
+    </div>
+    <div id="kills" class="kills"><span class="skull">✖</span> <b id="killCount">0</b></div>
+    <div id="loadout" class="loadout"></div>
+    <button id="pauseBtn" class="iconbtn" aria-label="Pause">❚❚</button>
+  </div>
+
+  <div id="banner" class="banner" aria-live="polite"><div class="b-title"></div><div class="b-sub"></div></div>
+
+  <!-- Title / trade select -->
+  <div id="menu" class="overlay">
+    <div class="panel menu-panel">
+      <div class="hazard" aria-hidden="true"></div>
+      <h1 class="title">TRADIE<span>SURVIVORS</span></h1>
+      <p class="tag">Ten minutes till knock-off. Survive the shift.</p>
+      <h2 class="section">Pick your trade</h2>
+      <div id="trades" class="trades"></div>
+      <button id="startBtn" class="btn primary">Start the shift ▸</button>
+      <p class="controls"><b>Move</b> WASD / arrows / drag &nbsp;·&nbsp; tools fire on their own &nbsp;·&nbsp; <b>Esc</b> smoko &nbsp;·&nbsp; <b>M</b> mute</p>
+    </div>
+  </div>
+
+  <!-- Level up -->
+  <div id="levelup" class="overlay hidden">
+    <div class="panel">
+      <h1 class="big">SMOKO!</h1>
+      <p class="tag">Level <b id="luLevel">2</b>. Pick one, then back on the tools.</p>
+      <div id="choices" class="choices"></div>
+      <p class="controls">Press <b>1</b>, <b>2</b> or <b>3</b></p>
+    </div>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause" class="overlay hidden">
+    <div class="panel small">
+      <h1 class="big">ON SMOKO</h1>
+      <p class="tag">Game paused.</p>
+      <div id="pauseLoadout" class="pause-loadout"></div>
+      <div class="btnrow">
+        <button id="resumeBtn" class="btn primary">Back to work</button>
+        <button id="quitBtn" class="btn">Walk off site</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game over / win -->
+  <div id="end" class="overlay hidden">
+    <div class="panel small">
+      <div class="hazard" aria-hidden="true"></div>
+      <h1 id="endTitle" class="big">SENT HOME</h1>
+      <p id="endSub" class="tag"></p>
+      <div id="endStats" class="stats"></div>
+      <div class="btnrow">
+        <button id="overtimeBtn" class="btn primary hidden">Do some overtime</button>
+        <button id="retryBtn" class="btn primary">Back on the tools</button>
+        <button id="menuBtn" class="btn">Change trade</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading" class="loading">Loading the ute…</div>
+
+  <script src="assets/assets.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
